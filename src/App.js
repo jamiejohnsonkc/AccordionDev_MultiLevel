@@ -146,9 +146,9 @@ export default function App() {
     <div className="App">
       <h3>Controlled Accordion</h3>
       <Accordion activeEventKey={activeEventKey} onToggle={setActiveEventKey}>
-        {content.map((content, index) => {
+        {content.map((content, id) => {
           return (
-            <div key={index}>
+            <div key={content.id}>
               <div>{content.title}</div>
               <div>
                 {/* {answer} */}
@@ -157,18 +157,18 @@ export default function App() {
                     activeEventKey={activeEventKey}
                     onToggle={setActiveEventKey}
                   >
-                    {content.skills.map((skill, index) => (
-                      <Card key={index}>
+                    {content.skills.map((skill, id) => (
+                      <Card key={skill.id}>
                         <Accordion.Toggle
                           element={Card.Header}
-                          eventKey={index}
+                          eventKey={skill.id}
                         >
                           <div>{skill.subTitle}</div>
-                          {activeEventKey !== index && <span>👇🏻</span>}
-                          {activeEventKey === index && <span>👆🏻</span>}
+                          {activeEventKey !== id && <span>👇🏻</span>}
+                          {activeEventKey === id && <span>👆🏻</span>}
                         </Accordion.Toggle>
                         <Accordion.Collapse
-                          eventKey={index}
+                          eventKey={skill.id}
                           element={Card.Body}
                         >
                           <div className="Bars">
